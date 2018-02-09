@@ -13,7 +13,7 @@ COPY debian-${WINE_DIST} /usr/src/wine/debian
 RUN mk-build-deps -i -r -t "apt-get -y --no-install-recommends" debian/control
 
 ARG WINE_GIT=theli-ua/wine
-ARG WINE_TAG=c68630ed6c1a96691d62e4ad1694b946b7324f84
+ARG WINE_TAG=f90401fc0c2eb22ca9bd79cf0fc96ce0edf8dc17
 RUN curl -L https://github.com/$WINE_GIT/archive/$WINE_TAG.tar.gz \
     | tar xz --strip-components 1
 
