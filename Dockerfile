@@ -33,6 +33,7 @@ RUN apt-get update \
 ###
 RUN apt update && apt install -y --no-install-recommends \
         gstreamer1.0-plugins-good \
+        gstreamer1.0-tools \
         pulseaudio-utils \
     && apt autoremove -y --purge \
     && apt clean -y && rm -rf /var/lib/apt/lists/* \
@@ -48,6 +49,8 @@ COPY extra/mtgo.sh /usr/local/bin/mtgo
 ADD --chown=wine:wine http://mtgoclientdepot.onlinegaming.wizards.com/setup.exe /opt/mtgo/mtgo.exe
 
 USER wine
+
+RUN gst-inspect-1.0
 
 # hack to allow mounting of user.reg and system.reg from host
 # see https://github.com/pauleve/docker-mtgo/issues/6
